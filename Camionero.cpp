@@ -12,8 +12,8 @@
 int main() {
 
   int km;       //distancia a recorrer
-  int paradas;  //
-  int viaje;
+  int paradas;  //paradas que se van a realizar
+  int distancia;    //
 
   return 0;
 }
