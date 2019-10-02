@@ -4,7 +4,6 @@
  *  A01021960
  *  Entrega: 4 de octubre del 2019
  */
-
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,13 +53,13 @@ void EncontrarSubstring(char* subA, char* subB, int x, int y){
 
   int subFinalNo = strlen(subFinal);
 
-  cout << "El substring mas grande es: " << subFinal << " y contiene " << subFinalNo << " caracteres." << endl;
+  cout << "El substring mas grande es '" << subFinal << "' contiene " << subFinalNo << " caracteres." << endl;
 };
 
 int main() {
 
-  char subA[] = "Juanito";
-  char subB[] = "Juanfra";
+  char subA[] = "Esta es una oración de prueba, esperemos que funcione.";
+  char subB[] = "Esta es una oración demo, a ver si sirve.";
 
   int x = strlen(subA);
   int y = strlen(subB);
