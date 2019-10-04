@@ -14,7 +14,6 @@
  *  Además de esto, el problema siendo subdividido para que pueda definir la mejor manera en la que
  *  se podrá separar las letras, en este caso, el tamaño de la palabra (las letras que la conforman)
  *  están siendo representadas por los valores 'letras' que se encuentran en el arreglo.
- *
  */
  #include <bits/stdc++.h>
  #include <iostream>
