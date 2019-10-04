@@ -3,86 +3,92 @@
  *  Daniel Roa
  *  A01021960
  *  Entrega: 4 de octubre del 2019
+ *
+ *  Complejidad del algoritmo: O(n^2)
+ *
+ *  Este algoritmo fue obtenido de: https://www.geeksforgeeks.org/word-wrap-problem-dp-19/
+ *
+ *  Este es un algoritmo dinámico debido a que el problema se puede subdividir, en este ejemplo,
+ *  el algoritmo está utilizando un valor INT_MAX, en el cual se declara el valor máximo positivo
+ *  de un entero que puede ser usado en el problema.
+ *  Además de esto, el problema siendo subdividido para que pueda definir la mejor manera en la que
+ *  se podrá separar las letras, en este caso, el tamaño de la palabra (las letras que la conforman)
+ *  están siendo representadas por los valores 'letras' que se encuentran en el arreglo.
+ *
  */
-#include <bits/stdc++.h>
-#include <iostream>
-using namespace std;
-#define INF INT_MAX
+ #include <bits/stdc++.h>
+ #include <iostream>
+ using namespace std;
+ #define INF INT_MAX
 
-int ImprimeSolucion(int sol[], int tam);
+ int Respuesta(int sol[], int tam);
 
-void Parrafos(int oracion[], int tam, int espacio){
+ void DivisionParrafos(int letras[], int tam, int espacio){
 
-  int espacioEX[tam+1][tam+1];  //numero de espacios extras
-  int costo[tam+1][tam+1];      //costo de la linea
-  int costTot[tam+1];           //costo óptimo
-  int sol[tam+1];               //impresión de solución
+ 	int espacioEX[tam+1][tam+1];
+ 	int costo[tam+1][tam+1];
+ 	int costoTot[tam+1];
+  int sol[tam+1];
+  int a, b;
 
-  int cont, i;
+ 	for (a = 1; a <= tam; a++)
+ 	{
+ 		espacioEX[a][a] = espacio - letras[a-1];
+ 		for (b = a+1; b <= tam; b++)
+ 			espacioEX[a][b] = espacioEX[a][b-1] - letras[b-1] - 1;
+ 	}
 
-  for (cont = 0; cont < tam; cont++)
-  {
-    espacioEX[cont][cont] = espacio - oracion[cont-1];
-    for (i = cont+1; i <= tam; i++)
-      espacioEX[cont][i] = espacioEX[cont][i-1] - oracion[i-1] - 1;
-    
-  }
+ 	for (a = 1; a <= tam; a++)
+ 	{
+ 		for (b = a; b <= tam; b++)
+ 		{
+ 			if (espacioEX[a][b] < 0)
+ 				costo[a][b] = INF;
+ 			else if (b == tam && espacioEX[a][b] >= 0)
+ 				costo[a][b] = 0;
+ 			else
+ 				costo[a][b] = espacioEX[a][b]*espacioEX[a][b];
+ 		}
+ 	}
 
-  for (cont = 1; cont <= tam; i++)
-  {
-    for (i = cont; i <= tam; i++)
-    {
-      if (espacioEX[cont][i] < 0)
-        costo[cont][i] = INF;
-      else if (i == cont && espacioEX[cont][i] >= 0)
-        costo[cont][i] = 0;  
-      else
-        costo[cont][i] = espacioEX[cont][i] * espacioEX[cont][i];
-      
-    }
-    
-  }
+ 	costoTot[0] = 0;
+ 	for (b = 1; b <= tam; b++)
+ 	{
+ 		costoTot[b] = INF;
+ 		for (a = 1; a <= b; a++)
+ 		{
+ 			if (costoTot[a-1] != INF && costo[a][b] != INF &&
+ 						(costoTot[a-1] + costo[a][b] < costoTot[b]))
+ 			{
+ 				costoTot[b] = costoTot[a-1] + costo[a][b];
+ 				sol[b] = a;
+ 			}
+ 		}
+ 	}
 
-  costTot[0] = 0;
-  for (i = 0; i <= tam; i++)
-  {
-    costTot[i] = INF;
-    for (cont = 1; cont <= i; cont++)
-    {
-      if (costTot[cont-1] != INF && costo[cont][i] != INF && (costTot[cont-1] + costo[cont][i] < costTot[i]))
-      {
-        costTot[i] = costTot[cont - 1] + costo[cont][i];
-        sol[i] = cont;
-      }
-      
-    }
-    
-  }
-  ImprimeSolucion(sol, tam);
-  
-}
+ 	Respuesta(sol, tam);
+ }
 
-int ImprimeSolucion(int sol[], int tam){
+ int Respuesta(int sol[], int tam)
+ {
+ 	int linea;
+ 	if (sol[tam] == 1)
+ 		linea = 1;
+ 	else
+ 		linea = Respuesta(sol, sol[tam]-1) + 1;
 
-  int x;
-  if (sol[tam] == 1)
-    x = 1;
-  else
-    x = ImprimeSolucion(sol, sol[tam]-1) + 1;
-  
-  cout << "No. línea " << x << ": de la palabra (no.) " << sol[tam] << " a " << tam << endl;
+ 	cout << "\nNúmero de línea: " << linea << "\nDe la palabra número: " << sol[tam] << " a " << tam << "\n\n";
 
-  return x;
+ 	return linea;
+ }
 
-}
+ int main()
+ {
+ 	int letras[] = {3, 2, 2, 5};
+ 	int tam = sizeof(letras)/sizeof(letras[0]);
+ 	int espacio = 6;
 
-int main() {
-
-  int oracion[] = {3,2,2,5};
-  int tam = sizeof(oracion) / sizeof(oracion[0]);
-  int espacio = 6;
-
-  Parrafos(oracion, tam, espacio);
+ 	DivisionParrafos(letras, tam, espacio);
 
   return 0;
-}
+ }

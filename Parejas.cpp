@@ -3,6 +3,16 @@
  *  Daniel Roa
  *  A01021960
  *  Entrega: 4 de octubre del 2019
+ *
+ *  Complejidad del algoritmo: O(n^2)
+ *
+ *  Este algoritmo fue obtenido de: https://www.geeksforgeeks.org/stable-marriage-problem/
+ *
+ *  Este es un algoritmo ávido debido a que se estan usando sus propios valores y
+ *  se están comparando para poder obtener el mejor resultado ya que se están comparando
+ *  los arreglos donde se encuentran los valores de las parejas (en este caso numéricos) y
+ *  se comparan con otras tablas.
+ *  Este definido por default el valor '4' para representar que hay un total de cuatro parejas en este caso.
  */
 #include <iostream>
 #include <stdio.h>
@@ -18,12 +28,12 @@ bool PrefH1(int preferencia[2*n][n], int m, int h, int h1){
   {
     if (preferencia[m][i] == h1)
       return true;
-    
+
     if(preferencia[m][i] == h)
       return false;
-    
+
   }
-  
+
 
 }
 
@@ -63,30 +73,30 @@ void RelacionEstable(int preferencia[2*n][n]){
           hombreSoltero[y] = true;
           hombreSoltero[semental] = false;
         }
-        
+
       }
-      
+
     }
-    
+
   }
-  
-  cout << "Mujeres Hombres" << endl; 
-	for (int i = 0; i < n; i++) 
-	cout << " " << i+n << "\t" << parejaFemina[i] << endl; 
+
+  cout << "Mujeres Hombres" << endl;
+	for (int i = 0; i < n; i++)
+	cout << " " << i+n << "\t" << parejaFemina[i] << endl;
 
 }
 
 int main() {
 
-  int preferencia[2*n][n] = { {7, 5, 6, 4}, 
-		{5, 4, 6, 7}, 
-		{4, 5, 6, 7}, 
-		{4, 5, 6, 7}, 
-		{0, 1, 2, 3}, 
-		{0, 1, 2, 3}, 
-		{0, 1, 2, 3}, 
-		{0, 1, 2, 3}, 
-	}; 
+  int preferencia[2*n][n] = { {7, 5, 6, 4},
+		{5, 4, 6, 7},
+		{4, 5, 6, 7},
+		{4, 5, 6, 7},
+		{0, 1, 2, 3},
+		{0, 1, 2, 3},
+		{0, 1, 2, 3},
+		{0, 1, 2, 3},
+	};
   RelacionEstable(preferencia);
 
   return 0;

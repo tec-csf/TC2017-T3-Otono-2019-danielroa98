@@ -3,11 +3,21 @@
  *  Daniel Roa
  *  A01021960
  *  Entrega: 4 de octubre del 2019
+ *
+ *  Complejidad del algoritmo: O(n)
+ *
+ *  Este algoritmo fue obtenido de: https://www.geeksforgeeks.org/number-of-refills-to-complete-the-journey-of-n-km/
+ *
+ *  La solución a este problema se realizó utilizando programación ávida,
+ *  debido a que se esta buscando la solución mas óptima para que el conductor
+ *  pueda pasar por las paradas requeridas y, de tal manera, poder abastecer el
+ *  tanque en las paradas especificadas.
+ *  Lo que va a realizar el algoritmo es, sumar las distancias recorridas usando
+ *  el ciclo while para que no se exceda de la distancia total y, posteriormente,
+ *  hacer la suma de las distancias.
  */
-
 #include <iostream>
 #include <stdio.h>
-#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -45,7 +55,7 @@ int main() {
   int paradas;      //cantidad de gasolineras en las que deberá parar
   int petrol;       //valor de las paradas
 
-  cout << "Inerta la cantidad total a recorrer." << '\n';
+  cout << "Inserta la cantidad total a recorrer." << '\n';
   cin >> recorrido;
   cout << '\n';
 
@@ -68,8 +78,7 @@ int main() {
     cout << '\n';
 
     gas[paradas];
-  } //NOTA, se pide añadir un valor de mas, falta debuggearlo
-    //en el case que no se pueda, se deberá escribir 0 en el valor adicional
+  }
 
   ParadaForzosa(recorrido, dist, paradas, gas);
 
