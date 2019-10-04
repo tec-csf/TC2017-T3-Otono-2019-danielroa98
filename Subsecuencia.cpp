@@ -10,8 +10,8 @@
  *
  *  Este es un algoritmo dinámico debido a que va a estar separando los caracteres que se
  *  encuentran dentro de los arreglos creados, una vez separados, las funciones for e if
- *  se encargarán de comparar los valores que se encuentra dentro de cada uno y, como es
- *  mas fácil utilizar caracteres, esta descomponiendo las posiciones de cada caracter.
+ *  se encargará de comparar los valores que se encuentra dentro de cada uno y, como es
+ *  más fácil utilizar caracteres, está descomponiendo las posiciones de cada carácter.
  *  Es importante mencionar, se utilizó apuntadores para poder acceder al valor almacenado
  *  en la memoria en lugar del id. de la dirección de la memoria.
  */

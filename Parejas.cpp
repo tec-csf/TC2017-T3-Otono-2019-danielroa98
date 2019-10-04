@@ -8,11 +8,11 @@
  *
  *  Este algoritmo fue obtenido de: https://www.geeksforgeeks.org/stable-marriage-problem/
  *
- *  Este es un algoritmo ávido debido a que se estan usando sus propios valores y
+ *  Este es un algoritmo ávido debido a que se están usando sus propios valores y
  *  se están comparando para poder obtener el mejor resultado ya que se están comparando
  *  los arreglos donde se encuentran los valores de las parejas (en este caso numéricos) y
  *  se comparan con otras tablas.
- *  Este definido por default el valor '4' para representar que hay un total de cuatro parejas en este caso.
+ *  Está definido por default el valor '4' para representar que hay un total de cuatro parejas en este caso.
  */
 #include <iostream>
 #include <stdio.h>

@@ -9,7 +9,7 @@
  *  Este algoritmo fue obtenido de: https://www.geeksforgeeks.org/number-of-refills-to-complete-the-journey-of-n-km/
  *
  *  La solución a este problema se realizó utilizando programación ávida,
- *  debido a que se esta buscando la solución mas óptima para que el conductor
+ *  debido a que se está buscando la solución más óptima para que el conductor
  *  pueda pasar por las paradas requeridas y, de tal manera, poder abastecer el
  *  tanque en las paradas especificadas.
  *  Lo que va a realizar el algoritmo es, sumar las distancias recorridas usando
